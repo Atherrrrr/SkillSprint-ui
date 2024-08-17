@@ -1,0 +1,101 @@
+{
+  "auth": {
+    "weprep": {
+      "customAuth": false,
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito",
+      "serviceType": "imported"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_auth_weprep_allowUnauthenticatedIdentities": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "weprep"
+        }
+      ]
+    },
+    "AMPLIFY_auth_weprep_authRoleArn": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "weprep"
+        }
+      ]
+    },
+    "AMPLIFY_auth_weprep_authRoleName": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "weprep"
+        }
+      ]
+    },
+    "AMPLIFY_auth_weprep_identityPoolId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "weprep"
+        }
+      ]
+    },
+    "AMPLIFY_auth_weprep_identityPoolName": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "weprep"
+        }
+      ]
+    },
+    "AMPLIFY_auth_weprep_nativeClientId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "weprep"
+        }
+      ]
+    },
+    "AMPLIFY_auth_weprep_unauthRoleArn": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "weprep"
+        }
+      ]
+    },
+    "AMPLIFY_auth_weprep_unauthRoleName": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "weprep"
+        }
+      ]
+    },
+    "AMPLIFY_auth_weprep_userPoolId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "weprep"
+        }
+      ]
+    },
+    "AMPLIFY_auth_weprep_userPoolName": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "weprep"
+        }
+      ]
+    },
+    "AMPLIFY_auth_weprep_webClientId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "weprep"
+        }
+      ]
+    }
+  }
+}

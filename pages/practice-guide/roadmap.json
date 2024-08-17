@@ -1,0 +1,1011 @@
+[
+    {
+        "Google": [
+            {
+                "title": "Reference Architecture Examples and Best Practices - AWS",
+                "url": "https://aws.amazon.com/architecture/"
+            },
+            {
+                "title": "Reference Architecture Examples and Best Practices - AWS",
+                "url": "https://aws.amazon.com/architecture/"
+            },
+            {
+                "title": "AWS Well-Architected Framework",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html"
+            },
+            {
+                "title": "AWS Well-Architected Framework",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html"
+            },
+            {
+                "title": "AWS Well-Architected - Build secure, efficient cloud ...",
+                "url": "https://aws.amazon.com/architecture/well-architected/"
+            },
+            {
+                "title": "AWS Well-Architected Framework",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html"
+            },
+            {
+                "title": "AWS Well-Architected Framework",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html"
+            },
+            {
+                "title": "AWS Well-Architected Framework",
+                "url": "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html"
+            },
+            {
+                "title": "AWS Certified Solutions Architect - Professional Certification",
+                "url": "https://aws.amazon.com/certification/certified-solutions-architect-professional/"
+            },
+            {
+                "title": "AWS Architecture Diagram Template",
+                "url": "https://miro.com/de/templates/aws-architektur-diagramm/"
+            },
+            {
+                "title": "AWS Architecture: Components and Diagram Explained",
+                "url": "https://www.theknowledgeacademy.com/blog/aws-architecture/"
+            },
+            {
+                "title": "AWS Architecture Diagram Template",
+                "url": "https://miro.com/de/templates/aws-architektur-diagramm/"
+            }
+        ],
+        "Query": "AWS Architecture",
+        "Reason": "Focusing on AWS architecture will help the user provide a more relevant and targeted response to the question. Understanding how AWS services work together can improve the quality of the answer.",
+        "YouTube": [
+            {
+                "duration": "9:12",
+                "published": "6 years ago",
+                "title": "AWS In 10 Minutes | AWS Tutorial For Beginners | AWS Cloud Computing For Beginners | Simplilearn",
+                "url": "https://www.youtube.com/watch?v=r4YIdn2eTm4",
+                "views": "2.3M views"
+            },
+            {
+                "duration": "58:30",
+                "published": "5 months ago",
+                "title": "AWS re:Invent 2023 - Best practices for creating multi-Region architectures on AWS (ARC308)",
+                "url": "https://www.youtube.com/watch?v=_vGlnzPZigU",
+                "views": "9.4K views"
+            },
+            {
+                "duration": "6:29",
+                "published": "4 years ago",
+                "title": "AWS end to end Architecture for Web App, web services and database",
+                "url": "https://www.youtube.com/watch?v=fCIDssg1oeU",
+                "views": "96K views"
+            },
+            {
+                "duration": "11:55:00",
+                "published": "Streamed 1 year ago",
+                "title": "AWS Full Course - Solutions Architect [12 Hours] | AWS Certified Solutions Architect [2024] |Edureka",
+                "url": "https://www.youtube.com/watch?v=5gnoVjpfWxU",
+                "views": "280K views"
+            },
+            {
+                "duration": "2:11:42",
+                "published": "2 years ago",
+                "title": "AWS VPC Beginner to Pro - Virtual Private Cloud Tutorial",
+                "url": "https://www.youtube.com/watch?v=g2JOHLHh4rI",
+                "views": "600K views"
+            },
+            {
+                "duration": "11:46",
+                "published": "2 years ago",
+                "title": "Top 50+ AWS Services Explained in 10 Minutes",
+                "url": "https://www.youtube.com/watch?v=JIbIYCM48to",
+                "views": "1.4M views"
+            },
+            {
+                "duration": "15:47",
+                "published": "2 months ago",
+                "title": "Real Life AWS Project Architecture Overview",
+                "url": "https://www.youtube.com/watch?v=jJ49-g337s4",
+                "views": "10K views"
+            },
+            {
+                "duration": "6:37",
+                "published": "1 year ago",
+                "title": "AWS Cloud Architect vs Solutions Architect - which one is right for you?",
+                "url": "https://www.youtube.com/watch?v=jpZCg4sCz_o",
+                "views": "128K views"
+            },
+            {
+                "duration": "30:02",
+                "published": "3 years ago",
+                "title": "Introduction to AWS Networking",
+                "url": "https://www.youtube.com/watch?v=XZbvQWkpJTI",
+                "views": "414K views"
+            },
+            {
+                "duration": "7:26",
+                "published": "4 weeks ago",
+                "title": "AWS Solution Architect | IAM Group - Part 5",
+                "url": "https://www.youtube.com/watch?v=mgErddn7Wtw",
+                "views": "720 views"
+            },
+            {
+                "duration": "5:30",
+                "published": "3 years ago",
+                "title": "AWS In 5 Minutes | What Is AWS? | AWS Tutorial For Beginners | AWS Training | Simplilearn",
+                "url": "https://www.youtube.com/watch?v=3XFODda6YXo",
+                "views": "786K views"
+            },
+            {
+                "duration": "31:21",
+                "published": "2 years ago",
+                "title": "AWS Architecture Diagramming For Beginners | How to Draw Cloud Architecture Diagrams AWS",
+                "url": "https://www.youtube.com/watch?v=tSqEljKKiU0",
+                "views": "43K views"
+            }
+        ],
+        "Coursera": [
+            {
+                "title": "Embedded Interface Design",
+                "course_details": "Intermediate · Specialization · 3 - 6 Months",
+                "course_organization": "University of Colorado Boulder",
+                "url": "https://www.coursera.org/specializations/embedded-interface-design"
+            },
+            {
+                "title": "Advanced System Security Design",
+                "course_details": "Beginner · Specialization · 3 - 6 Months",
+                "course_organization": "University of Colorado System",
+                "url": "https://www.coursera.org/specializations/advanced-system-security-design"
+            },
+            {
+                "title": "Introduction to Computer Security",
+                "course_details": "Beginner · Course · 1 - 4 Weeks",
+                "course_organization": "University of London",
+                "url": "https://www.coursera.org/learn/introduction-to-computer-security"
+            },
+            {
+                "title": "Power BI Integration with AWS and Snowflake",
+                "course_details": "Intermediate · Course · 1 - 4 Weeks",
+                "course_organization": "Edureka",
+                "url": "https://www.coursera.org/learn/power-bi-integration-with-aws-and-snowflake"
+            },
+            {
+                "title": "Fundamentals of Big Data",
+                "course_details": "Mixed · Course · 1 - 4 Weeks",
+                "course_organization": "LearnQuest",
+                "url": "https://www.coursera.org/learn/fundamentals-of-big-data"
+            },
+            {
+                "title": "Advanced System Security Topics",
+                "course_details": "Beginner · Course · 1 - 4 Weeks",
+                "course_organization": "University of Colorado System",
+                "url": "https://www.coursera.org/learn/advanced-system-security-topics"
+            },
+            {
+                "title": "Amazon Lex Getting Started",
+                "course_details": "Beginner · Course · 1 - 4 Weeks",
+                "course_organization": "Amazon Web Services",
+                "url": "https://www.coursera.org/learn/aws-amazon-lex-getting-started"
+            },
+            {
+                "title": "Cloud Deployment and Scaling with ASP.NET Core",
+                "course_details": "Intermediate · Course · 1 - 4 Weeks",
+                "course_organization": "EDUCBA",
+                "url": "https://www.coursera.org/learn/cloud-deployment-and-scaling-with-asp-net-core"
+            },
+            {
+                "title": "PostgreSQL Fundamentals: Architecture",
+                "course_details": "Mixed · Course · 1 - 4 Weeks",
+                "course_organization": "Amazon Web Services",
+                "url": "https://www.coursera.org/learn/aws-postgresql-fundamentals-architecture"
+            },
+            {
+                "title": "Build a Business Architecture using AWS Organization",
+                "course_details": "Intermediate · Guided Project · Less Than 2 Hours",
+                "course_organization": "oursera Project Network",
+                "url": "https://www.coursera.org/projects/build-a-business-architecture-using-aws-organization"
+            },
+            {
+                "title": "AWS Multi-Tier VPC Architecture",
+                "course_details": "Beginner · Guided Project · Less Than 2 Hours",
+                "course_organization": "oursera Project Network",
+                "url": "https://www.coursera.org/projects/aws-multi-tier-vpc-architecture"
+            },
+            {
+                "title": "AWS: Network Management and Operations",
+                "course_details": "Intermediate · Course · 1 - 4 Weeks",
+                "course_organization": "Whizlabs",
+                "url": "https://www.coursera.org/learn/aws-network-management-and-operations"
+            }
+        ]
+    },
+    {
+        "Google": [
+            {
+                "title": "What are microservices?",
+                "url": "https://microservices.io/"
+            },
+            {
+                "title": "What are Microservices? | AWS",
+                "url": "https://aws.amazon.com/microservices/"
+            },
+            {
+                "title": "Microservices",
+                "url": "https://en.wikipedia.org/wiki/Microservices"
+            },
+            {
+                "title": "What are Microservices?",
+                "url": "https://www.geeksforgeeks.org/microservices/"
+            },
+            {
+                "title": "What Is Microservices Architecture?",
+                "url": "https://cloud.google.com/learn/what-is-microservices-architecture"
+            },
+            {
+                "title": "Microservice architecture style - Azure Architecture Center",
+                "url": "https://learn.microsoft.com/en-us/azure/architecture/guide/architecture-styles/microservices"
+            },
+            {
+                "title": "What are Microservices? Code Examples, Tutorials & More",
+                "url": "https://stackify.com/what-are-microservices/"
+            },
+            {
+                "title": "Microservices",
+                "url": "https://de.wikipedia.org/wiki/Microservices"
+            },
+            {
+                "title": "What are Microservices? | Definition and Guide from ...",
+                "url": "https://www.techtarget.com/searchapparchitecture/definition/microservices"
+            },
+            {
+                "title": "Pattern: Microservice Architecture",
+                "url": "https://microservices.io/patterns/microservices"
+            },
+            {
+                "title": "What are microservices?",
+                "url": "https://www.redhat.com/en/topics/microservices/what-are-microservices"
+            },
+            {
+                "title": "What Are Microservices?",
+                "url": "https://www.ibm.com/topics/microservices"
+            },
+            {
+                "title": "Microservices: understanding what it is and its benefits",
+                "url": "https://www.atlassian.com/microservices"
+            },
+            {
+                "title": "Was sind Microservices? | AWS - Amazon.com",
+                "url": "https://aws.amazon.com/de/microservices/"
+            }
+        ],
+        "Query": "Microservices",
+        "Reason": "Learning about microservices architecture using AWS can help the user structure their response better. It can demonstrate their understanding of building scalable and resilient applications on AWS.",
+        "YouTube": [
+            {
+                "duration": "18:30",
+                "published": "1 year ago",
+                "title": "Microservices explained - the What, Why and How?",
+                "url": "https://www.youtube.com/watch?v=rv4LlmLmVWk",
+                "views": "786K views"
+            },
+            {
+                "duration": "3:09",
+                "published": "4 years ago",
+                "title": "Microservices",
+                "url": "https://www.youtube.com/watch?v=y8OnoxKotPQ",
+                "views": "3.3M views"
+            },
+            {
+                "duration": "4:45",
+                "published": "1 year ago",
+                "title": "What Are Microservices Really All About? (And When Not To Use It)",
+                "url": "https://www.youtube.com/watch?v=lTAcCNbJ7KE",
+                "views": "613K views"
+            },
+            {
+                "duration": "6:38",
+                "published": "5 years ago",
+                "title": "What are Microservices?",
+                "url": "https://www.youtube.com/watch?v=CdBtNQZH8a4",
+                "views": "251K views"
+            },
+            {
+                "duration": "5:17",
+                "published": "1 year ago",
+                "title": "Microservices Explained in 5 Minutes",
+                "url": "https://www.youtube.com/watch?v=lL_j7ilk7rc",
+                "views": "670K views"
+            },
+            {
+                "duration": "10:43",
+                "published": "1 year ago",
+                "title": "Monolithic vs Microservice Architecture: Which To Use and When?",
+                "url": "https://www.youtube.com/watch?v=NdeTGlZ__Do",
+                "views": "56K views"
+            },
+            {
+                "duration": "17:47",
+                "published": "3 years ago",
+                "title": "The Problem With Microservices",
+                "url": "https://www.youtube.com/watch?v=zzMLg3Ys5vI",
+                "views": "427K views"
+            },
+            {
+                "duration": "9:06",
+                "published": "1 year ago",
+                "title": "What are Microservices?",
+                "url": "https://www.youtube.com/watch?v=3WqDbU_Xnu4",
+                "views": "116K views"
+            },
+            {
+                "duration": "13:40",
+                "published": "3 months ago",
+                "title": "The Thing No One Tells You About Microservices",
+                "url": "https://www.youtube.com/watch?v=yC6EEuxhglE",
+                "views": "55K views"
+            },
+            {
+                "duration": "22:23",
+                "published": "2 years ago",
+                "title": "What are microservices?!?!? Let’s build one with .NET and Docker!",
+                "url": "https://www.youtube.com/watch?v=DFDbh1c9zyE",
+                "views": "112K views"
+            },
+            {
+                "duration": "3:39:35",
+                "published": "4 years ago",
+                "title": "Microservices Full Course - Learn Microservices in 4 Hours | Microservices Tutorial | Edureka",
+                "url": "https://www.youtube.com/watch?v=tuJqH3AV0e8",
+                "views": "857K views"
+            },
+            {
+                "duration": "19:25",
+                "published": "2 years ago",
+                "title": "Moving from MONOLITHS to MICROSERVICES 🎂 → 🍰🍰🍰",
+                "url": "https://www.youtube.com/watch?v=rckfN7xFig0",
+                "views": "209K views"
+            }
+        ],
+        "Coursera": [
+            {
+                "title": "Application Development using Microservices and Serverless",
+                "course_details": "Intermediate · Course · 1 - 3 Months",
+                "course_organization": "IBM",
+                "url": "https://www.coursera.org/learn/applications-development-microservices-serverless-openshift"
+            },
+            {
+                "title": "Building Scalable Java Microservices with Spring Boot and Spring Cloud",
+                "course_details": "Intermediate · Course · 1 - 4 Weeks",
+                "course_organization": "Google Cloud",
+                "url": "https://www.coursera.org/learn/google-cloud-java-spring"
+            },
+            {
+                "title": "Scalable Microservices for Developers",
+                "course_details": "Intermediate · Specialization · 1 - 3 Months",
+                "course_organization": "Vanderbilt University",
+                "url": "https://www.coursera.org/specializations/microservices"
+            },
+            {
+                "title": "RESTful Microservices Using Node.js and Express",
+                "course_details": "Intermediate · Specialization · 3 - 6 Months",
+                "course_organization": "NIIT",
+                "url": "https://www.coursera.org/specializations/restful-microservices-using-node-js-and-express"
+            },
+            {
+                "title": "Microservice Architectures",
+                "course_details": "Intermediate · Course · 1 - 4 Weeks",
+                "course_organization": "Vanderbilt University",
+                "url": "https://www.coursera.org/learn/microservices"
+            },
+            {
+                "title": "Spring Framework",
+                "course_details": "Beginner · Specialization · 1 - 3 Months",
+                "course_organization": "LearnQuest",
+                "url": "https://www.coursera.org/specializations/spring-framework"
+            },
+            {
+                "title": "Microservices and Deployment by using ASP.NET",
+                "course_details": "Advanced · Course · 1 - 4 Weeks",
+                "course_organization": "Board Infinity ",
+                "url": "https://www.coursera.org/learn/microservices-and-deployment-by-using-aspnet"
+            },
+            {
+                "title": "IBM Full Stack Software Developer",
+                "course_details": "Beginner · Professional Certificate · 3 - 6 Months",
+                "course_organization": "IBM",
+                "url": "https://www.coursera.org/professional-certificates/ibm-full-stack-cloud-developer"
+            },
+            {
+                "title": "Build and Implement Microservices Patterns",
+                "course_details": "Mixed · Course · 1 - 4 Weeks",
+                "course_organization": "NIIT",
+                "url": "https://www.coursera.org/learn/build-and-implement-microservices-patterns"
+            },
+            {
+                "title": "Software Design and Architecture",
+                "course_details": "Beginner · Specialization · 3 - 6 Months",
+                "course_organization": "University of Alberta",
+                "url": "https://www.coursera.org/specializations/software-design-architecture"
+            },
+            {
+                "title": "Introduction to DevOps",
+                "course_details": "Beginner · Course · 1 - 3 Months",
+                "course_organization": "IBM",
+                "url": "https://www.coursera.org/learn/intro-to-devops"
+            },
+            {
+                "title": "Migrating a Monolithic Website to Microservices on Google Kubernetes Engine",
+                "course_details": "Intermediate · Project · Less Than 2 Hours",
+                "course_organization": "Google Cloud",
+                "url": "https://www.coursera.org/projects/googlecloud-migrating-a-monolithic-website-to-microservices-on-google-kube-vomee"
+            }
+        ]
+    },
+    {
+        "Google": [
+            {
+                "title": "Serverless: Zero-Friction Serverless Apps On AWS Lambda ...",
+                "url": "https://serverless.com/"
+            },
+            {
+                "title": "Serverless: Zero-Friction Serverless Apps On AWS Lambda ...",
+                "url": "https://serverless.com/"
+            },
+            {
+                "title": "Serverless computing",
+                "url": "https://en.wikipedia.org/wiki/Serverless_computing"
+            },
+            {
+                "title": "Serverless Computing – Amazon Web Services",
+                "url": "https://aws.amazon.com/serverless/"
+            },
+            {
+                "title": "Serverless Framework",
+                "url": "https://github.com/serverless/serverless"
+            },
+            {
+                "title": "What is serverless?",
+                "url": "https://www.redhat.com/en/topics/cloud-native-apps/what-is-serverless"
+            },
+            {
+                "title": "Serverless",
+                "url": "https://cloud.google.com/serverless"
+            },
+            {
+                "title": "What is serverless computing?",
+                "url": "https://www.cloudflare.com/learning/serverless/what-is-serverless/"
+            },
+            {
+                "title": "Serverless computing and applications",
+                "url": "https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-serverless-computing"
+            },
+            {
+                "title": "Was bedeutet Serverless?",
+                "url": "https://www.oracle.com/de/cloud/cloud-native/functions/what-is-serverless/"
+            },
+            {
+                "title": "What Is Serverless Computing?",
+                "url": "https://www.ibm.com/topics/serverless"
+            },
+            {
+                "title": "Was ist Serverless Computing?",
+                "url": "https://aws.amazon.com/de/what-is/serverless-computing/"
+            }
+        ],
+        "Query": "Serverless",
+        "Reason": "Exploring serverless computing with AWS Lambda can enhance the user's knowledge of building cost-effective and scalable applications. It can help them provide a more comprehensive answer to the question.",
+        "YouTube": [
+            {
+                "duration": "6:42",
+                "published": "3 years ago",
+                "title": "What is Serverless?",
+                "url": "https://www.youtube.com/watch?v=vxJobGtqKVM",
+                "views": "175K views"
+            },
+            {
+                "duration": "3:48",
+                "published": "1 year ago",
+                "title": "Serverless was a big mistake... says Amazon",
+                "url": "https://www.youtube.com/watch?v=qQk94CjRvIs",
+                "views": "1.5M views"
+            },
+            {
+                "duration": "8:30",
+                "published": "3 years ago",
+                "title": "What Is Serverless?",
+                "url": "https://www.youtube.com/watch?v=Fx3ZGy-mbV4",
+                "views": "174K views"
+            },
+            {
+                "duration": "16:46",
+                "published": "3 years ago",
+                "title": "Serverless Computing in 100 Seconds",
+                "url": "https://www.youtube.com/watch?v=W_VV2Fx32_Y",
+                "views": "271K views"
+            },
+            {
+                "duration": "3:02",
+                "published": "8 years ago",
+                "title": "Introduction to AWS Lambda - Serverless Compute on Amazon Web Services",
+                "url": "https://www.youtube.com/watch?v=eOBq__h4OJ4",
+                "views": "595K views"
+            },
+            {
+                "duration": "56:02",
+                "published": "5 years ago",
+                "title": "Introduction to AWS Lambda & Serverless Applications",
+                "url": "https://www.youtube.com/watch?v=EBSdyoO3goc",
+                "views": "308K views"
+            },
+            {
+                "duration": "2:16",
+                "published": "1 year ago",
+                "title": "What is Serverless Computing? An Introduction",
+                "url": "https://www.youtube.com/watch?v=YoBfFwsoWIU",
+                "views": "9.8K views"
+            },
+            {
+                "duration": "20:53",
+                "published": "2 years ago",
+                "title": "Getting Started with Serverless Framework",
+                "url": "https://www.youtube.com/watch?v=KQRGM9_eqIw",
+                "views": "29K views"
+            },
+            {
+                "duration": "1:31:14",
+                "published": "Streamed 3 days ago",
+                "title": "Mobile + Serverless with .NET MAUI and AWS Lambda",
+                "url": "https://www.youtube.com/watch?v=tyMY2pTlzvU",
+                "views": "79 views"
+            },
+            {
+                "duration": "13:40",
+                "published": "11 months ago",
+                "title": "Serverless Was A Mistake | Prime Reacts",
+                "url": "https://www.youtube.com/watch?v=BcMm0aaqnnI",
+                "views": "202K views"
+            },
+            {
+                "duration": "6:34",
+                "published": "5 months ago",
+                "title": "The Big Problem With \"Serverless\"",
+                "url": "https://www.youtube.com/watch?v=10kVndpDKvA",
+                "views": "24K views"
+            },
+            {
+                "duration": "36:11",
+                "published": "1 year ago",
+                "title": "What is Serverless? | Serverless Vs Monolith | AWS Lambda",
+                "url": "https://www.youtube.com/watch?v=AgOmeANl3ls",
+                "views": "64K views"
+            }
+        ],
+        "Coursera": [
+            {
+                "title": "Serverless Data Processing with Dataflow: Foundations",
+                "course_details": "Intermediate · Course · 1 - 3 Months",
+                "course_organization": "Google Cloud",
+                "url": "https://www.coursera.org/learn/serverless-data-processing-with-dataflow-foundations"
+            },
+            {
+                "title": "Serverless Data Processing with Dataflow",
+                "course_details": "Intermediate · Specialization · 3 - 6 Months",
+                "course_organization": "Google Cloud",
+                "url": "https://www.coursera.org/specializations/serverless-data-processing-with-dataflow"
+            },
+            {
+                "title": "Application Development using Microservices and Serverless",
+                "course_details": "Intermediate · Course · 1 - 3 Months",
+                "course_organization": "IBM",
+                "url": "https://www.coursera.org/learn/applications-development-microservices-serverless-openshift"
+            },
+            {
+                "title": "Serverless Architectures on AWS",
+                "course_details": "Beginner · Course · 1 - 4 Weeks",
+                "course_organization": "Amazon Web Services",
+                "url": "https://www.coursera.org/learn/aws-serverless"
+            },
+            {
+                "title": "Create Serverless Applications",
+                "course_details": "Intermediate · Course · 1 - 3 Months",
+                "course_organization": "Microsoft",
+                "url": "https://www.coursera.org/learn/create-serverless-applications"
+            },
+            {
+                "title": "Developing Applications on AWS",
+                "course_details": "Beginner · Specialization · 1 - 3 Months",
+                "course_organization": "Amazon Web Services",
+                "url": "https://www.coursera.org/specializations/building-serverless-applications-aws"
+            },
+            {
+                "title": "Build a Serverless Web App with Firebase",
+                "course_details": "Beginner · Project · Less Than 2 Hours",
+                "course_organization": "Google Cloud",
+                "url": "https://www.coursera.org/projects/googlecloud-build-a-serverless-web-app-with-firebase-pxs2b"
+            },
+            {
+                "title": "Azure: create a REST API using NodeJS Serverless Functions",
+                "course_details": "Beginner · Guided Project · Less Than 2 Hours",
+                "course_organization": "oursera Project Network",
+                "url": "https://www.coursera.org/projects/azure-create-a-rest-api-using-nodejs-serverless-functions"
+            },
+            {
+                "title": "Introduction to Serverless Development",
+                "course_details": "Mixed · Course · 1 - 4 Weeks",
+                "course_organization": "Amazon Web Services",
+                "url": "https://www.coursera.org/learn/aws-introduction-to-serverless-development"
+            },
+            {
+                "title": "Introducción a computación serverless con AWS Lambda",
+                "course_details": "Intermediate · Guided Project · Less Than 2 Hours",
+                "course_organization": "oursera Project Network",
+                "url": "https://www.coursera.org/projects/serverless-aws"
+            },
+            {
+                "title": "Choosing Serverless Containers for .NET",
+                "course_details": "Mixed · Course · 1 - 4 Weeks",
+                "course_organization": "Amazon Web Services",
+                "url": "https://www.coursera.org/learn/choosing-serverless-containers-for-net"
+            },
+            {
+                "title": "Amazon DynamoDB for Serverless Architectures",
+                "course_details": "Mixed · Course · 1 - 4 Weeks",
+                "course_organization": "Amazon Web Services",
+                "url": "https://www.coursera.org/learn/aws-amazon-dynamodb-for-serverless-architectures"
+            }
+        ]
+    },
+    {
+        "Google": [
+            {
+                "title": "DevOps",
+                "url": "https://en.wikipedia.org/wiki/DevOps"
+            },
+            {
+                "title": "What is DevOps?",
+                "url": "https://www.atlassian.com/devops"
+            },
+            {
+                "title": "Azure DevOps Services",
+                "url": "https://azure.microsoft.com/en-us/products/devops"
+            },
+            {
+                "title": "DevOps",
+                "url": "https://de.wikipedia.org/wiki/DevOps"
+            },
+            {
+                "title": "Was ist DevOps?",
+                "url": "https://www.ibm.com/de-de/topics/devops"
+            },
+            {
+                "title": "Was ist DevOps?",
+                "url": "https://azure.microsoft.com/de-de/resources/cloud-computing-dictionary/what-is-devops"
+            },
+            {
+                "title": "What is DevOps?",
+                "url": "https://about.gitlab.com/topics/devops/"
+            },
+            {
+                "title": "Understanding DevOps",
+                "url": "https://www.redhat.com/en/topics/devops"
+            },
+            {
+                "title": "DevOps - The Web's Largest Collection of DevOps Content",
+                "url": "https://devops.com/"
+            },
+            {
+                "title": "Einfach erklärt: Was ist DevOps?",
+                "url": "https://weissenberg-group.de/was-ist-devops/"
+            },
+            {
+                "title": "What Is DevOps and How Does It Work?",
+                "url": "https://www.synopsys.com/glossary/what-is-devops.html"
+            },
+            {
+                "title": "What Is DevOps? - Practices and Benefits Explained",
+                "url": "https://www.netapp.com/devops-solutions/what-is-devops/"
+            },
+            {
+                "title": "DevOps Principles",
+                "url": "https://www.atlassian.com/devops/what-is-devops"
+            }
+        ],
+        "Query": "DevOps",
+        "Reason": "Studying DevOps practices on AWS, such as CI/CD pipelines and infrastructure as code, can improve the user's understanding of efficient software development processes. It can help them give a more well-rounded response.",
+        "YouTube": [
+            {
+                "duration": "6:37",
+                "published": "1 year ago",
+                "title": "What is DevOps? DevOps Explained | Simplest Explanation in Hindi",
+                "url": "https://www.youtube.com/watch?v=h7LDnVsNRVI",
+                "views": "638K views"
+            },
+            {
+                "duration": "40:28",
+                "published": "3 months ago",
+                "title": "If I Could Start Over as a DevOps Engineer in 2024",
+                "url": "https://www.youtube.com/watch?v=mQFQevK1J0c",
+                "views": "12K views"
+            },
+            {
+                "duration": "8:23",
+                "published": "3 years ago",
+                "title": "DevOps vs. SRE: What's the difference?",
+                "url": "https://www.youtube.com/watch?v=KCzNd3StIoU",
+                "views": "64K views"
+            },
+            {
+                "duration": "36:29",
+                "published": "1 year ago",
+                "title": "Azure DevOps Tutorial for Beginners | CI/CD with Azure Pipelines",
+                "url": "https://www.youtube.com/watch?v=4BibQ69MD8c",
+                "views": "1.1M views"
+            },
+            {
+                "duration": "18:09",
+                "published": "5 years ago",
+                "title": "Introduction To DevOps | Devops Tutorial For Beginners | DevOps Training For Beginners | Simplilearn",
+                "url": "https://www.youtube.com/watch?v=Me3ea4nUt0U",
+                "views": "388K views"
+            },
+            {
+                "duration": "4:41",
+                "published": "2 years ago",
+                "title": "What is DevOps?",
+                "url": "https://www.youtube.com/watch?v=kBV8gPVZNEE",
+                "views": "182K views"
+            },
+            {
+                "duration": "0:38",
+                "published": "5 months ago",
+                "title": "What Do DevOps Engineers Actually Do? 🤨 #devops",
+                "url": "https://www.youtube.com/watch?v=B8jL-rJvzmQ",
+                "views": "29K views"
+            }
+        ],
+        "Coursera": [
+            {
+                "title": "Introduction to DevOps",
+                "course_details": "Beginner · Course · 1 - 3 Months",
+                "course_organization": "IBM",
+                "url": "https://www.coursera.org/learn/intro-to-devops"
+            },
+            {
+                "title": "IBM DevOps and Software Engineering",
+                "course_details": "Beginner · Professional Certificate · 3 - 6 Months",
+                "course_organization": "IBM",
+                "url": "https://www.coursera.org/professional-certificates/devops-and-software-engineering"
+            },
+            {
+                "title": "DevOps on AWS",
+                "course_details": "Intermediate · Specialization · 1 - 3 Months",
+                "course_organization": "Amazon Web Services",
+                "url": "https://www.coursera.org/specializations/aws-devops"
+            },
+            {
+                "title": "IBM Applied DevOps Engineering",
+                "course_details": "Intermediate · Professional Certificate · 3 - 6 Months",
+                "course_organization": "IBM",
+                "url": "https://www.coursera.org/professional-certificates/ibm-applied-devops-engineering"
+            },
+            {
+                "title": "AWS Cloud Technology Consultant",
+                "course_details": "Beginner · Professional Certificate · 3 - 6 Months",
+                "course_organization": "Amazon Web Services",
+                "url": "https://www.coursera.org/professional-certificates/aws-cloud-technology-consultant"
+            },
+            {
+                "title": "IBM Full Stack Software Developer",
+                "course_details": "Beginner · Professional Certificate · 3 - 6 Months",
+                "course_organization": "IBM",
+                "url": "https://www.coursera.org/professional-certificates/ibm-full-stack-cloud-developer"
+            },
+            {
+                "title": "DevOps, Cloud, and Agile Foundations",
+                "course_details": "Beginner · Specialization · 3 - 6 Months",
+                "course_organization": "IBM",
+                "url": "https://www.coursera.org/specializations/devops-cloud-and-agile-foundations"
+            },
+            {
+                "title": "DevOps, DataOps, MLOps",
+                "course_details": "Advanced · Course · 1 - 3 Months",
+                "course_organization": "Duke University",
+                "url": "https://www.coursera.org/learn/devops-dataops-mlops-duke"
+            },
+            {
+                "title": "DevOps: Introduction to Developer Operations",
+                "course_details": "Beginner · Specialization · 3 - 6 Months",
+                "course_organization": "odio",
+                "url": "https://www.coursera.org/specializations/codio-devops"
+            },
+            {
+                "title": "Python Scripting for DevOps",
+                "course_details": "Beginner · Specialization · 3 - 6 Months",
+                "course_organization": "LearnQuest",
+                "url": "https://www.coursera.org/specializations/python-scripting-devops"
+            },
+            {
+                "title": "Preparing for Google Cloud Certification: Cloud DevOps Engineer",
+                "course_details": "Beginner · Professional Certificate · 3 - 6 Months",
+                "course_organization": "Google Cloud",
+                "url": "https://www.coursera.org/professional-certificates/sre-devops-engineer-google-cloud"
+            },
+            {
+                "title": "Python for Data Science, AI & Development",
+                "course_details": "Beginner · Course · 1 - 3 Months",
+                "course_organization": "IBM",
+                "url": "https://www.coursera.org/learn/python-for-applied-data-science-ai"
+            }
+        ]
+    },
+    {
+        "Google": [
+            {
+                "title": "What is Cloud Migration",
+                "url": "https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-cloud-migration"
+            },
+            {
+                "title": "Was ist Cloudmigration?",
+                "url": "https://azure.microsoft.com/de-de/resources/cloud-computing-dictionary/what-is-cloud-migration"
+            },
+            {
+                "title": "What is Cloud Migration? | Benefits, Process & Types",
+                "url": "https://www.accenture.com/us-en/insights/cloud-migration-index"
+            },
+            {
+                "title": "What is Cloud Migration? Strategy, Process, and Tools",
+                "url": "https://bluexp.netapp.com/blog/cloud-migration-strategy-challenges-and-steps"
+            },
+            {
+                "title": "What Is Cloud Migration?",
+                "url": "https://www.ibm.com/topics/cloud-migration"
+            },
+            {
+                "title": "What is Cloud Migration? Essential Guide to Moving ...",
+                "url": "https://www.techtarget.com/searchcloudcomputing/definition/cloud-migration"
+            },
+            {
+                "title": "Was ist Cloud-Migration?",
+                "url": "https://aws.amazon.com/de/what-is/cloud-migration/"
+            },
+            {
+                "title": "What is Cloud Migration? Benefits and Challenges",
+                "url": "https://www.vmware.com/topics/glossary/content/cloud-migration.html"
+            },
+            {
+                "title": "What is cloud migration? | Cloud migration strategy",
+                "url": "https://www.cloudflare.com/learning/cloud/what-is-cloud-migration/"
+            },
+            {
+                "title": "Cloud-Migration: Definition, Vorteile & Hindernisse",
+                "url": "https://www.talend.com/de/resources/was-ist-cloud-migration/"
+            },
+            {
+                "title": "Cloud Migration Guide",
+                "url": "https://www.atlassian.com/migration/plan/cloud-guide"
+            },
+            {
+                "title": "Was bedeutet Cloud-Migration? | Cloud-Migrationsstrategie",
+                "url": "https://www.cloudflare.com/de-de/learning/cloud/what-is-cloud-migration/"
+            },
+            {
+                "title": "Cloud Migration - Amazon Web Services",
+                "url": "https://aws.amazon.com/cloud-migration/"
+            }
+        ],
+        "Query": "Cloud Migration",
+        "Reason": "Researching cloud migration strategies and best practices on AWS can broaden the user's perspective on overcoming challenges in a project. It can help them provide a more insightful and relevant answer to the question.",
+        "YouTube": [
+            {
+                "duration": "10:51",
+                "published": "1 year ago",
+                "title": "Cloud Computing Migration Strategies | Understanding the 7Rs",
+                "url": "https://www.youtube.com/watch?v=suU08PO33Mo",
+                "views": "4.6K views"
+            },
+            {
+                "duration": "5:25:58",
+                "published": "Streamed 2 years ago",
+                "title": "AWS Migration Complete Tutorial | Migration To AWS Cloud | Cloud Migration | Intellipaat",
+                "url": "https://www.youtube.com/watch?v=AXQ7n7rDfFE",
+                "views": "33K views"
+            },
+            {
+                "duration": "14:06",
+                "published": "3 years ago",
+                "title": "6 R's | Cloud Migration Strategies | Which one is right for you? | Tech Primers",
+                "url": "https://www.youtube.com/watch?v=1O4f2jOmbPg",
+                "views": "93K views"
+            },
+            {
+                "duration": "16:43",
+                "published": "10 months ago",
+                "title": "5 Stages for a Painless Cloud Migration Step By Step",
+                "url": "https://www.youtube.com/watch?v=9RSFz1vZ59c",
+                "views": "6.2K views"
+            },
+            {
+                "duration": "4:36",
+                "published": "2 years ago",
+                "title": "4.7 7 Steps of migration cloud",
+                "url": "https://www.youtube.com/watch?v=nbd7vSgjlOE",
+                "views": "22K views"
+            },
+            {
+                "duration": "17:04",
+                "published": "1 year ago",
+                "title": "How to configure Azure Migration Step by Step Guide | Azure Migrate | Cloud Migration",
+                "url": "https://www.youtube.com/watch?v=lj2rAeFnYEo",
+                "views": "29K views"
+            }
+        ],
+        "Coursera": [
+            {
+                "title": "Using AWS Solutions: AWS Cloud Migration Factory",
+                "course_details": "Beginner · Course · 1 - 4 Weeks",
+                "course_organization": "Amazon Web Services",
+                "url": "https://www.coursera.org/learn/aws-using-aws-solutions-aws-cloud-migration-factory"
+            },
+            {
+                "title": "Tencent Cloud Solutions Architect Professional",
+                "course_details": "Advanced · Course · 3 - 6 Months",
+                "course_organization": "Tencent Cloud",
+                "url": "https://www.coursera.org/learn/tencent-cloud-solutions-architect-professional"
+            },
+            {
+                "title": "Migrating from Microsoft SQL Server to Amazon RDS",
+                "course_details": "Beginner · Course · 1 - 4 Weeks",
+                "course_organization": "Amazon Web Services",
+                "url": "https://www.coursera.org/learn/aws-migrating-from-microsoft-sql-server-to-amazon-rds"
+            },
+            {
+                "title": "Migrating from Microsoft SQL Server to Amazon DynamoDB",
+                "course_details": "Mixed · Course · 1 - 4 Weeks",
+                "course_organization": "Amazon Web Services",
+                "url": "https://www.coursera.org/learn/aws-migrating-from-microsoft-sql-server-to-amazon-dynamodb"
+            },
+            {
+                "title": "Introduction to Migration Center Assessments",
+                "course_details": "Intermediate · Project · Less Than 2 Hours",
+                "course_organization": "Google Cloud",
+                "url": "https://www.coursera.org/projects/googlecloud-introduction-to-migration-center-assessments-qwdvs"
+            },
+            {
+                "title": "Migrating to the AWS Cloud",
+                "course_details": "Intermediate · Course · 1 - 4 Weeks",
+                "course_organization": "Amazon Web Services",
+                "url": "https://www.coursera.org/learn/aws-fundamentals-migrating-to-the-cloud"
+            },
+            {
+                "title": "VM Migration: Planning",
+                "course_details": "Intermediate · Project · Less Than 2 Hours",
+                "course_organization": "Google Cloud",
+                "url": "https://www.coursera.org/projects/googlecloud-vm-migration-planning-hkhfd"
+            },
+            {
+                "title": "Software Development on SAP HANA",
+                "course_details": "Beginner · Course · 1 - 4 Weeks",
+                "course_organization": "SkillUp EdTech",
+                "url": "https://www.coursera.org/learn/software-development-on-sap-hana"
+            },
+            {
+                "title": "The Unix Workbench",
+                "course_details": "Beginner · Course · 1 - 3 Months",
+                "course_organization": "Johns Hopkins University",
+                "url": "https://www.coursera.org/learn/unix"
+            },
+            {
+                "title": "Migrating to Cloud SQL from Amazon RDS for MySQL Using Database Migration Service",
+                "course_details": "Advanced · Project · Less Than 2 Hours",
+                "course_organization": "Google Cloud",
+                "url": "https://www.coursera.org/projects/googlecloud-migrating-to-cloud-sql-from-amazon-rds-for-mysql-using-databas-lyazm"
+            },
+            {
+                "title": "Data Wrangling with MongoDB",
+                "course_details": "Intermediate · Course · 1 - 3 Months",
+                "course_organization": "Edureka",
+                "url": "https://www.coursera.org/learn/data-wrangling-with-mongodb"
+            },
+            {
+                "title": "Breaking Free from Legacy Databases",
+                "course_details": "Mixed · Course · 1 - 4 Weeks",
+                "course_organization": "Amazon Web Services",
+                "url": "https://www.coursera.org/learn/aws-breaking-free-from-legacy-databases"
+            }
+        ]
+    }
+]
