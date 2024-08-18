@@ -103,10 +103,10 @@ function CreateLearningPathModal({ open, handleClose }) {
     if (currentUser?.sub) {
       try {
         console.log("Creating roadmap");
-        // const response = await axios.post(CREATE_ROADMAP(currentUser.sub), {
-        //   ...formData,
-        //   userId: currentUser.sub,
-        // });
+        const response = await axios.post(CREATE_ROADMAP(currentUser.sub), {
+          ...formData,
+          userId: currentUser.sub,
+        });
         snackbar(
           "success",
           "Request Submitted! The new Learning Path is being prepared and will soon be available in 5-8 minutes."
