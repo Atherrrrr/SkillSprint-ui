@@ -28,7 +28,7 @@ import SideBar from "@/components/layout/Sidebar";
 import { SessionType } from "@/Enums/SessionType";
 import { fetchAuthSession, fetchUserAttributes } from "aws-amplify/auth";
 import { currentUserAtom } from "@/store/store";
-import CreateLearningPathModel from "@/components/models/CreateLearningPathModel";
+import CreateLearningPathModal from "@/components/models/CreateLearningPathModal";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -62,9 +62,8 @@ const PageContainer = ({ children, theme, sidebarWidth }: PageContainerProps) =>
 export default function Layout(props: LayoutProps) {
   const theme = useTheme();
   const [isModalOpen, setIsModalOpen] = React.useState(false);
-  const [sessionType, setSessionType] = React.useState<SessionType>();
   const [sidebarWidth, setSidebarWidth] = React.useState(32);
-  const [, setCurrentUser] = useAtom(currentUserAtom);
+  const [currentUser, setCurrentUser] = useAtom(currentUserAtom);
 
   useEffect(() => {
     fetchUserAttributes()
@@ -127,6 +126,35 @@ export default function Layout(props: LayoutProps) {
     };
   }, [router]);
 
+  function stringToColor(string: string) {
+    let hash = 0;
+    let i;
+
+    /* eslint-disable no-bitwise */
+    for (i = 0; i < string.length; i += 1) {
+      hash = string.charCodeAt(i) + ((hash << 5) - hash);
+    }
+
+    let color = "#";
+
+    for (i = 0; i < 3; i += 1) {
+      const value = (hash >> (i * 8)) & 0xff;
+      color += `00${value.toString(16)}`.slice(-2);
+    }
+    /* eslint-enable no-bitwise */
+
+    return color;
+  }
+
+  function stringAvatar(name: string) {
+    return {
+      sx: {
+        bgcolor: stringToColor(name),
+      },
+      children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
+    };
+  }
+
   return (
     <>
       {true && (
@@ -149,7 +177,18 @@ export default function Layout(props: LayoutProps) {
         autoHideDuration={6000}
         onClose={() => setSnackbarStatus(false)}
       >
-        <Alert onClose={() => setSnackbarStatus(false)} severity={severity} sx={{ width: "100%" }}>
+        <Alert
+          onClose={() => setSnackbarStatus(false)}
+          severity={severity}
+          sx={{
+            width: "100%",
+            bgcolor: theme.palette[severity].main,
+            // "& .MuiAlert-message": {
+            //   // targeting the message class directly
+            //   color: theme.palette[severity].contrastText, // setting text color to white
+            // },
+          }}
+        >
           {message}
         </Alert>
       </Snackbar>
@@ -190,7 +229,7 @@ export default function Layout(props: LayoutProps) {
                       marginLeft: theme.spacing(2),
                       marginRight: "auto",
                     }}
-                    alt="WePrep logo"
+                    alt="SkillSprint logo"
                     src={
                       theme.palette.mode === IThemeMode.LIGHT
                         ? "/app-logo-light.png"
@@ -217,7 +256,7 @@ export default function Layout(props: LayoutProps) {
                   >
                     Start a New Learning Path
                   </Button>
-                  <CreateLearningPathModel
+                  <CreateLearningPathModal
                     open={isModalOpen}
                     handleClose={() => setIsModalOpen(false)}
                   />
@@ -226,11 +265,15 @@ export default function Layout(props: LayoutProps) {
                     <NotificationsOutlined style={{ fill: theme.palette.primary.main }} />
                   </IconButton>
                   <Box onClick={goToAccount}>
-                    <Avatar src={"/user-avatar.svg"} />
+                    <Avatar
+                      {...stringAvatar(`${currentUser.given_name} ${currentUser.family_name}`)}
+                    />
                   </Box>
-                  <Typography variant="subtitle2" color={theme.palette.primary.main}>
-                    Arshia Bakhshayesh
-                  </Typography>
+                  {currentUser && (
+                    <Typography variant="subtitle2" color={theme.palette.primary.main}>
+                      {`${currentUser.given_name} ${currentUser.family_name}`}
+                    </Typography>
+                  )}
                   <LightDarkSwitchBtn />
                 </Grid>
               </Grid>

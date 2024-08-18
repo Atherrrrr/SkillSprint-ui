@@ -111,6 +111,8 @@ let AppLightTheme: Theme = createTheme({
     },
     success: {
       main: "#008200",
+      light: "#e0ffe0",
+      contrastText: "#000",
     },
   },
   typography: {
@@ -143,7 +145,7 @@ let AppDarkTheme: Theme = createTheme({
     },
     error: {
       main: "#EF3C34",
-      light: "#FFA9A5",
+      light: "#FFA1A5",
     },
     background: {
       default: "#161A23",
@@ -162,6 +164,7 @@ let AppDarkTheme: Theme = createTheme({
     },
     success: {
       main: "#009000",
+      light: "#e0ffe0",
     },
   },
   typography: {

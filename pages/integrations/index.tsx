@@ -16,12 +16,12 @@ export default function IntegrationsPage() {
     {
       title: "Linkedin",
       description:
-        "Connect Linkedin to help Al evaluator understand your experience and skills better.",
+        "Connect Linkedin to help Personalize your Learning Paths and Recommendations better.",
       icon: LinkedInIcon,
     },
     {
       title: "Google Calendar",
-      description: "Connect Google Calendar to allow Al evaluator to schedule meetings with you.",
+      description: "Connect Google Calendar to allow SkillSprint to remind you for daily practices",
       icon: GoogleIcon,
     },
   ];
@@ -38,14 +38,15 @@ export default function IntegrationsPage() {
                 <Grid container spacing={2} alignItems="center">
                   <Grid item>
                     <Box sx={{ fontSize: "40px", color: theme.palette.primary.main }}>
-                      <connection.icon />
+                      {/* Apply color directly to the icon */}
+                      <connection.icon sx={{ fill: theme.palette.primary.main }} />
                     </Box>
                   </Grid>
                   <Grid item xs>
-                    <Typography variant="h5" color={theme.palette.text.primary}>
+                    <Typography variant="h5" color="text.primary">
                       {connection.title}
                     </Typography>
-                    <Typography variant="body2" color={theme.palette.text.secondary}>
+                    <Typography variant="body2" color="text.secondary">
                       {connection.description}
                     </Typography>
                   </Grid>

@@ -6,246 +6,150 @@ import {
   useTheme,
   CircularProgress,
   circularProgressClasses,
-  styled,
-  CardContent,
-  Chip,
-  CardMedia,
-  Card,
 } from "@mui/material";
 import CircularScore from "@/components/analytics/CircularScore";
 import Calendar from "react-github-contribution-calendar";
-import PracticeSessionsTable from "@/components/Tables/PracticeSessionsTable";
-// import { calculateEmotionalPositivity } from "@/utils/EmotionalPositivityCalculator";
-import { engagement } from "@/components/charts/AttentionChart";
-import { calculateAttentionScore } from "@/utils/AttentionCalculator";
-import { calculateBodyLanguageScore } from "@/utils/calculateBodyLanguageScore";
-import { audioData } from "@/components/charts/AudioEmotionChart";
-import {
-  AudioSummaryCalculator,
-  calculateAudioEmotionalPositivity,
-} from "@/utils/AudioSummaryCalculator";
 import axios from "axios";
-import { SESSIONS_LIST, USER_AVG_SCORES } from "@/hooks/apiHelper";
-import {
-  MockInterviewSessionData,
-  PracticeSessionData,
-  PresentationPracticeSessionData,
-  QuickStartSessionData,
-  SessionType,
-} from "@/Enums/SessionType";
-import { useSnackbar } from "@/store/snackbar";
+import { GET_USER_ROADMAP } from "@/hooks/apiHelper";
 
-import { formatDate } from "@/utils/formatData";
-import { DetailData } from "../past-sessions";
-import LearningPathThumbnail from "@/components/LearningPath/thumbnail";
-const userIdScore = "73246862-10e1-7048-87fa-97fd9947fa34";
-// const sessionData = [
-//   {
-//     name: "Frontend React Developer",
-//     type: "Mock Interview",
-//     date: "2024-08-23",
-//     avgScore: 88,
-//     status: "Analyzed",
-//     duration: "5 mins",
-//     imageSrc: "/react.jpg",
-//   },
-//   {
-//     name: "WePrep Pitch",
-//     type: "Sales Pitch",
-//     date: "2024-08-25",
-//     avgScore: 65,
-//     status: "Analyzed",
-//     duration: "3 mins",
-//     imageSrc: "/ps2.jpg",
-//   },
-//   {
-//     name: "WePrep Pitch",
-//     type: "Sales Pitch",
-//     date: "2024-08-25",
-//     avgScore: 42,
-//     status: "Analyzed",
-//     duration: "2 mins",
-//     imageSrc: "/ps1.jpg",
-//   },
-//   {
-//     name: "Presentation Recording",
-//     type: "Upload Video",
-//     date: "2021-08-12",
-//     avgScore: 92,
-//     status: "Analyzed",
-//     duration: "6 mins",
-//     imageSrc: "/ps2.jpg",
-//   },
-//   {
-//     name: "Frontend React Developer",
-//     type: "Mock Interview",
-//     date: "2024-08-23",
-//     avgScore: 83,
-//     status: "Analyzed",
-//     duration: "5 mins",
-//     imageSrc: "/ps1.jpg",
-//   },
-//   {
-//     name: "Frontend React Developer",
-//     type: "Mock Interview",
-//     date: "2024-08-23",
-//     avgScore: 26,
-//     status: "Analyzed",
-//     duration: "5 mins",
-//     imageSrc: "/react.jpg",
-//   },
-// ];
+import UserLearningPathThumbnail from "@/components/LearningPath/UserLearningPathThumbnail";
+import { currentUserAtom, exampleCompletedLearningPaths } from "@/store/store";
+import { useAtom } from "jotai";
+import CompletionBadge from "@/components/atoms/CompletionBadge";
+
 export default function BasicCard() {
   const theme = useTheme();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [, setScoreData] = useState();
-  const snackbar = useSnackbar();
-  const [sessionsList, setSessionsList] = useState<PracticeSessionData[]>();
 
-  const fetchVideosList = async () => {
-    try {
-      setIsLoading(true);
-      const response = await axios.get(SESSIONS_LIST(userIdScore));
-      const interviewDetails = response.data.interviewDetails;
-      console.log("interviewDetails", interviewDetails);
-
-      const processedSessions: PracticeSessionData[] = interviewDetails.map(
-        (detail: DetailData): PracticeSessionData => {
-          // The type of baseSessionData should be properly declared based on the sessionType field
-          const sessionType = detail.sessionType as SessionType;
-          let date = "";
-          let time = "";
-          if (detail.createdAt) {
-            ({ date, time } = formatDate(detail.createdAt));
-          }
-
-          const baseSessionData = {
-            id: detail.interviewId || "",
-            title: detail.title || "",
-            description: detail.description || "",
-            sessionType: sessionType,
-            status: detail.status || "Processing",
-            score: detail.avgScore || 0,
-            duration: detail.duration || "1min",
-            thumbnailUrl: detail.thumbnailUrl || "",
-            creationDate: date,
-            creationTime: time,
-          };
-
-          switch (sessionType) {
-            case SessionType.MockInterview:
-              return {
-                ...baseSessionData,
-                interviewType: detail.interviewType || "",
-                interviewDuration: detail.interviewDuration || "",
-                questionMode: detail.questionMode || "",
-                interviewTone: detail.interviewTone || "",
-                resumeId: detail.resumeId || "",
-              } as MockInterviewSessionData;
-            case SessionType.PresentationPractice:
-            case SessionType.SalesPitch:
-            case SessionType.UploadVideo:
-              return {
-                ...baseSessionData,
-                desiredTone: detail.desiredTone || "",
-              } as PresentationPracticeSessionData;
-            case SessionType.QuickStart:
-            default:
-              return baseSessionData as QuickStartSessionData; // No additional fields for QuickStart
-          }
-        }
-      );
-
-      processedSessions.push({
-        id: "0",
-        description: "Mock interview session for a frontend developer role",
-        title: "React Frontend Developer",
-        sessionType: SessionType.MockInterview,
-        creationDate: "2024-08-26",
-        creationTime: "12:40 PM",
-        score: 75,
-        status: "Analyzed",
-        duration: "3 mins",
-        thumbnailUrl: "/react.jpg",
-        // Adding the following required properties
-        interviewType: "Technical", // Example value, adjust as necessary
-        interviewDuration: "30 mins", // Example value
-        questionMode: "Sequential", // Example value
-        interviewTone: "Strict", // Example value
-        resumeId: "123456789", // Example value
-      });
-      setSessionsList(processedSessions);
-    } catch (error) {
-      console.error("Failed to fetch Practice Sessions:", error);
-      snackbar("error", "Failed to load Practice Sessions. Please try again later.");
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const [currentUser] = useAtom(currentUserAtom);
+  const [userLearningPaths, setUserLearningPaths] = useState(null);
+  const [completedLearningPaths, setCompletedLearningPaths] = useState([]);
+  const [values, setValues] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    fetchScores();
-    fetchVideosList();
-  }, []);
+    //get learning path.
+    if (currentUser?.sub) {
+      fetchUserLearningPath(currentUser.sub);
+      if (currentUser.given_name === "Ather") {
+        setValues(AtherValues);
+      }
+    }
+  }, [currentUser]);
 
-  const fetchScores = async () => {
-    setIsLoading(true);
-    console.log("Fetching fetchScores");
+  const fetchUserLearningPath = async (userId: string) => {
     try {
-      const response = await axios.get(USER_AVG_SCORES(userIdScore));
-      setScoreData(response.data);
-      console.log("Response", response.data);
+      setIsLoading(true);
+      const response = await axios.get(GET_USER_ROADMAP(userId));
+      if (response.data.length <= 0) {
+        setCompletedLearningPaths([]);
+        setUserLearningPaths([]);
+        setIsLoading(false);
+        return;
+      }
+      const updatedPaths = response.data.map((path) => {
+        const title = path.title.toLowerCase();
+        return {
+          ...path,
+          mostPopular: title.includes("aws") || title.includes("frontend"),
+          forBeginners:
+            path.currentSkillLevel === "No Experience" || path.currentSkillLevel === "Beginner",
+        };
+      });
+
+      // Filter completed learning paths
+      let completedPaths = updatedPaths.filter((path) => path.status === "Completed");
+      const remainingPaths = updatedPaths.filter((path) => path.status !== "Completed");
+
+      completedPaths = [...completedPaths, ...exampleCompletedLearningPaths];
+
+      // Update the states
+      setUserLearningPaths(remainingPaths);
+      setCompletedLearningPaths(completedPaths);
       setIsLoading(false);
     } catch (error) {
-      console.error("Failed to fetch fetchScores:", error);
-      // snackbar("error", "Failed to load videos. Please try again later.");
-      console.log("sessionsData");
-      setIsLoading(false);
+      console.error("Failed to fetch user learning paths:", error);
+      setUserLearningPaths([]);
+      // Optionally, handle the error further, e.g., setting state to display an error message.
     }
   };
-  const values = {
-    "2023-07-23": 41,
-    "2024-01-26": 42,
-    "2024-02-27": 43,
-    "2024-01-28": 44,
-    "2024-01-29": 44,
-    "2024-02-01": 43,
-    "2024-02-05": 42,
-    "2024-02-15": 41,
-    "2024-02-20": 44,
-    "2024-03-01": 42,
-    "2024-03-05": 43,
-    "2024-03-10": 44,
-    "2024-03-15": 14,
-    "2024-03-20": 42,
-    "2024-03-25": 0,
-    "2024-04-24": 42,
-    "2024-04-25": 43,
-    "2024-04-26": 41,
-    "2024-04-27": 44,
-    "2024-04-28": 41,
-    "2024-04-29": 42,
-    "2024-04-30": 44,
-    "2024-05-01": 34,
-    "2024-05-02": 41,
-    "2024-05-03": 34,
-    "2024-05-04": 24,
-    "2024-05-05": 44,
-    "2024-05-06": 14,
-    "2024-05-07": 0,
-    "2024-05-08": 0,
-    "2024-05-09": 0,
-    "2024-05-10": 34,
-    "2024-05-11": 44,
-    "2024-05-12": 61,
-    "2024-05-13": 15,
-    "2024-05-14": 81,
-    "2024-05-15": 51,
-    "2024-05-16": 15,
-    "2024-05-17": 7,
+
+  const AtherValues = {
+    "2024-05-23": 44,
+    "2024-05-24": 14,
+    "2024-05-25": 28,
+    "2024-05-26": 37,
+    "2024-05-29": 34,
+    "2024-05-30": 43,
+    "2024-05-31": 52,
+    "2024-06-01": 44,
+    "2024-06-02": 38,
+    "2024-06-03": 17,
+    "2024-06-04": 61,
+    "2024-06-05": 42,
+    "2024-06-06": 13,
+    "2024-06-07": 44,
+    "2024-06-08": 14,
+    "2024-06-09": 0,
+    "2024-06-10": 44,
+    "2024-06-13": 47,
+    "2024-06-14": 42,
+    "2024-06-15": 12,
+    "2024-06-16": 41,
+    "2024-06-17": 15,
+    "2024-06-18": 44,
+    "2024-06-19": 27,
+    "2024-06-22": 44,
+    "2024-06-23": 29,
+    "2024-06-24": 43,
+    "2024-06-25": 28,
+    "2024-06-26": 44,
+    "2024-06-27": 41,
+    "2024-06-28": 39,
+    "2024-06-29": 0,
+    "2024-06-30": 37,
+    "2024-07-01": 41,
+    "2024-07-02": 44,
+    "2024-07-03": 21,
+    "2024-07-06": 42,
+    "2024-07-07": 27,
+    "2024-07-08": 39,
+    "2024-07-09": 38,
+    "2024-07-10": 41,
+    "2024-07-11": 35,
+    "2024-07-12": 44,
+    "2024-07-15": 41,
+    "2024-07-16": 32,
+    "2024-07-17": 44,
+    "2024-07-18": 41,
+    "2024-07-19": 42,
+    "2024-07-20": 35,
+    "2024-07-21": 44,
+    "2024-07-22": 28,
+    "2024-07-25": 44,
+    "2024-07-26": 37,
+    "2024-07-27": 41,
+    "2024-07-28": 44,
+    "2024-07-29": 43,
+    "2024-07-30": 41,
+    "2024-07-31": 42,
+    "2024-08-01": 35,
+    "2024-08-05": 29,
+    "2024-08-06": 42,
+    "2024-08-07": 44,
+    "2024-08-08": 39,
+    "2024-08-09": 42,
+    "2024-08-10": 41,
+    "2024-08-11": 37,
+    "2024-08-12": 44,
+    "2024-08-13": 41,
+    "2024-08-14": 32,
+    "2024-08-15": 44,
+    "2024-08-16": 41,
+    "2024-08-17": 35,
+    "2024-08-18": 44,
   };
 
-  const until = "2024-05-17";
+  const until = "2024-08-18";
 
   const panelColors = [
     theme.palette.mode === "light" ? "#D4D4D8" : "#2D2F39",
@@ -274,84 +178,17 @@ export default function BasicCard() {
     ry: 3,
   };
 
-  const StyledCard = styled(Card)({
-    display: "flex",
-    borderRadius: "16px",
-    overflow: "hidden",
-    boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
-    maxWidth: 600,
-  });
-
-  const ContentWrapper = styled(Box)({
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
-    width: "70%",
-  });
-
-  interface CloudComputingCardProps {
-    imageUrl: string;
-  }
-
-  const myLearningPaths = [
-    {
-      id: "123",
-      title: "AWS Cloud Computing",
-      description:
-        "Master Cloud Computing using AWS services. This learning path will teach you about popular AWS services and how to effectively utilize them. Gain insights into optimizing cloud resources for real-world applications.",
-      image: "https://i.pinimg.com/736x/d4/74/7c/d4747cb7dcbecb5223b83355ea97a3be.jpg",
-      mostPopular: true,
-      currentPhase: 1,
-      totalPhases: 2,
-      currentLesson: 1,
-      totalLessons: 8,
-      currentTime: 0,
-      totalTime: 3,
-    },
-    {
-      id: "124",
-      title: "Full-Stack Development",
-      description:
-        "Learn to build scalable full-stack applications using modern technologies like React, Node.js, and MongoDB. Understand how to connect your frontend and backend seamlessly.",
-      image: "https://images.unsplash.com/photo-1555099962-4199c345e5dd",
-      mostPopular: false,
-      currentPhase: 2,
-      totalPhases: 4,
-      currentLesson: 5,
-      totalLessons: 20,
-      currentTime: 12,
-      totalTime: 40,
-    },
-    {
-      id: "127",
-      title: "Data Science with Python",
-      description:
-        "Dive into the world of data science with Python. Analyze data, create beautiful visualizations, and use machine learning to glean insights and make predictions.",
-      image: "https://images.unsplash.com/photo-1518932945647-7a1c969f8be2",
-      mostPopular: false,
-      currentPhase: 1,
-      totalPhases: 3,
-      currentLesson: 2,
-      totalLessons: 10,
-      currentTime: 4,
-      totalTime: 20,
-    },
-  ];
-
   return (
     <Box sx={{ width: "95%", overflowX: "auto", pl: "5", ml: 3, mb: 5 }}>
       <Typography variant="h2" align="center" gutterBottom>
-        Welcome Arshia 👋
-      </Typography>
-      <Typography variant="h3" sx={{ ml: 2, mb: 2 }}>
-        Your Scores:
+        {`Welcome ${currentUser.given_name} 👋`}
       </Typography>
       <Box
         sx={{
           p: 2,
           pb: 3,
           mt: 1,
-          mb: 1,
+          mb: 7,
           border: 2,
           borderRadius: 3,
           borderColor: theme.palette.primary.main,
@@ -395,9 +232,48 @@ export default function BasicCard() {
           </Grid>
         </Grid>
       </Box>
+      <Grid container spacing={1}>
+        {!isLoading ? (
+          completedLearningPaths.length > 0 && (
+            <Box sx={{ ml: 8 }}>
+              <Typography variant="h3" sx={{ ml: 2, mb: 2 }}>
+                Completed Learning Paths:
+              </Typography>
+              <Grid container spacing={3}>
+                {completedLearningPaths.map((roadmap) => (
+                  <Grid item key={roadmap.id} xs={12} sm={6} md={4} lg={3}>
+                    <CompletionBadge {...roadmap} />
+                  </Grid>
+                ))}
+              </Grid>
+            </Box>
+          )
+        ) : (
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "20vh",
+              ml: 50,
+            }}
+          >
+            <CircularProgress
+              size={115}
+              thickness={2}
+              sx={{
+                [`& .${circularProgressClasses.circle}`]: {
+                  strokeLinecap: "round",
+                  stroke: theme.palette.primary.main,
+                },
+              }}
+            />
+          </Box>
+        )}
+      </Grid>
 
-      <Typography variant="h3" sx={{ ml: 2, mb: 3, mt: 3 }}>
-        You Practiced 36 days this Year
+      <Typography variant="h3" sx={{ ml: 2, mb: 3, mt: 2 }}>
+        You Practiced {Object.keys(values).length} days this Year
       </Typography>
       <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
         <Calendar
@@ -409,39 +285,59 @@ export default function BasicCard() {
           panelColors={panelColors}
         />
       </div>
-      <Box sx={{ display: "flex", justifyContent: "flex-end", alignItems: "center", mt: 2 }}>
-        <Typography variant="body2" sx={{ mr: 1 }}>
-          Less
-        </Typography>
-        {panelColors.map((color, index) => (
+
+      <Typography variant="h3" gutterBottom sx={{ mt: 3 }}>
+        My Learning Paths:
+      </Typography>
+      {userLearningPaths ? (
+        userLearningPaths.length > 0 ? (
+          <Grid container spacing={4}>
+            {userLearningPaths.map((path, index) => (
+              <Grid item xs={12} sm={6} key={index}>
+                <UserLearningPathThumbnail {...path} />
+              </Grid>
+            ))}
+          </Grid>
+        ) : (
           <Box
-            key={index}
             sx={{
-              width: 17,
-              height: 17,
-              backgroundColor: color,
-              mx: 0.5,
-              borderRadius: 1,
+              display: "flex",
+              flexDirection: "column", // Stacks children vertically
+              justifyContent: "center",
+              alignItems: "center",
+              height: "20vh",
+            }}
+          >
+            <Typography variant="h6" gutterBottom>
+              No Learning Paths Found.
+            </Typography>
+            <Typography variant="body2" gutterBottom>
+              Start a new Learning Path by creating one or search from the Recommended Learning
+              Paths
+            </Typography>
+          </Box>
+        )
+      ) : (
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "20vh", // This takes the full height of the viewport
+          }}
+        >
+          <CircularProgress
+            size={115}
+            thickness={2}
+            sx={{
+              [`& .${circularProgressClasses.circle}`]: {
+                strokeLinecap: "round",
+                stroke: theme.palette.primary.main,
+              },
             }}
           />
-        ))}
-        <Typography variant="body2" sx={{ ml: 1 }}>
-          More
-        </Typography>
-      </Box>
-
-      <Box sx={{ mb: 5 }}>
-        <Typography variant="h3" gutterBottom>
-          My Learning Paths
-        </Typography>
-        <Grid container spacing={3}>
-          {myLearningPaths.map((path, index) => (
-            <Grid item xs={12} sm={6} key={index}>
-              <LearningPathThumbnail {...path} />
-            </Grid>
-          ))}
-        </Grid>
-      </Box>
+        </Box>
+      )}
     </Box>
   );
 }

@@ -1,5 +1,5 @@
 // components/InfoBitFlashCard.tsx
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Modal,
   Button,
@@ -18,19 +18,25 @@ import {
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import YouTubeIcon from "@mui/icons-material/YouTube";
+import Microlink from "@microlink/react";
+import { Refresh } from "@mui/icons-material";
 
 interface InfoBit {
   text: string;
   keywords: string[];
-  video_resource: string;
-  text_resource: string;
   example?: string;
+}
+
+interface SearchResult {
+  videoResult: { link: string }[];
+  webResult: { url: string }[];
 }
 
 interface Props {
   lessonTitle: string;
   infoBits: InfoBit[];
   open: boolean;
+  searchResult: SearchResult;
   handleClose: () => void;
   handleComplete: () => void;
 }
@@ -38,16 +44,54 @@ interface Props {
 const InfoBitFlashCard: React.FC<Props> = ({
   lessonTitle,
   infoBits,
+  searchResult,
   open,
   handleClose,
   handleComplete,
 }) => {
   const [current, setCurrent] = useState(0);
   const [openConfirm, setOpenConfirm] = useState(false);
+  const [showSearchResults, setShowSearchResults] = useState(false);
+  const [webResultIndex, setWebResultIndex] = useState(0);
+  const [videoResultIndex, setVideoResultIndex] = useState(0);
   const theme = useTheme();
 
+  const refreshWebResult = () => {
+    const length = searchResult.webResult.length;
+
+    if (length > 0) {
+      let newIndex = webResultIndex;
+
+      // Ensure the new index is different from the current index
+      while (newIndex === webResultIndex) {
+        newIndex = Math.floor(Math.random() * length);
+      }
+
+      setWebResultIndex(newIndex);
+    }
+  };
+
+  const refreshVideoResult = () => {
+    const length = searchResult.videoResult.length;
+
+    if (length > 0) {
+      let newIndex = videoResultIndex;
+
+      // Ensure the new index is different from the current index
+      while (newIndex === videoResultIndex) {
+        newIndex = Math.floor(Math.random() * length);
+      }
+
+      setVideoResultIndex(newIndex);
+    }
+  };
+
   const confirmForExit = () => {
-    setOpenConfirm(true);
+    if (showSearchResults) {
+      handleExitResources();
+    } else {
+      setOpenConfirm(true);
+    }
   };
 
   const handleCancelExit = () => {
@@ -55,9 +99,8 @@ const InfoBitFlashCard: React.FC<Props> = ({
   };
 
   const handleInfoBitComplete = () => {
-    setOpenConfirm(false);
-    setCurrent(0);
-    handleComplete();
+    setShowSearchResults(true);
+    setCurrent(current + 1);
   };
 
   const handleNext = () => {
@@ -67,10 +110,17 @@ const InfoBitFlashCard: React.FC<Props> = ({
       handleInfoBitComplete();
     }
   };
+  const handleExitResources = () => {
+    setShowSearchResults(false);
+    setCurrent(0);
+    handleComplete();
+  };
 
   const handleExit = () => {
+    setShowSearchResults(false);
     setOpenConfirm(false);
     setCurrent(0);
+
     handleClose();
   };
 
@@ -145,44 +195,84 @@ const InfoBitFlashCard: React.FC<Props> = ({
               </Box>
             </Box>
 
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              {highlightKeywords(infoBits[current].text, infoBits[current].keywords)}
-            </Typography>
-            {infoBits[current].example && (
+            {!showSearchResults ? (
               <>
-                <Typography variant="subtitle1" sx={{ mt: 2 }}>
-                  Example:
+                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                  {highlightKeywords(infoBits[current].text, infoBits[current].keywords)}
                 </Typography>
-                <Typography variant="body2">{infoBits[current].example}</Typography>
+                {infoBits[current].example && (
+                  <>
+                    <Typography variant="subtitle1" sx={{ mt: 2 }}>
+                      Example:
+                    </Typography>
+                    <Typography variant="body2">{infoBits[current].example}</Typography>
+                  </>
+                )}
+                <Box sx={{ mt: 2, display: "flex", justifyContent: "center" }}>
+                  {current !== infoBits.length - 1 && (
+                    <Button variant="outlined" sx={{ mr: 2 }} onClick={confirmForExit}>
+                      Exit
+                    </Button>
+                  )}
+                  <Button variant="contained" onClick={handleNext}>
+                    {current === infoBits.length - 1 ? "Finish" : "Next"}
+                  </Button>
+                </Box>
+              </>
+            ) : (
+              <>
+                <Typography variant="h4" align="center" sx={{ mt: 2 }}>
+                  Recommended Resources
+                </Typography>
+                {searchResult.videoResult.length > 0 && (
+                  <>
+                    <Box sx={{ display: "flex", alignItems: "center", mt: 2 }}>
+                      <Typography variant="subtitle1" sx={{ flexGrow: 1 }}>
+                        Video Resource:
+                      </Typography>
+                      <IconButton onClick={refreshVideoResult} aria-label="refresh video result">
+                        <Refresh sx={{ fill: theme.palette.primary.main }} />
+                      </IconButton>
+                    </Box>
+                    <Box
+                      sx={{
+                        width: "100%",
+                        maxWidth: "100%",
+                      }}
+                    >
+                      <Microlink
+                        url={searchResult.videoResult[videoResultIndex].link}
+                        style={{
+                          flexGrow: 1,
+                          width: "100%",
+                          display: "flex",
+                          justifyContent: "center",
+                        }}
+                      />
+                    </Box>
+                  </>
+                )}
+
+                {searchResult.webResult.length > 0 && (
+                  <>
+                    <Box sx={{ display: "flex", alignItems: "center", mt: 2 }}>
+                      <Typography variant="subtitle1" sx={{ flexGrow: 1 }}>
+                        Web Resource:
+                      </Typography>
+                      <IconButton onClick={refreshWebResult} aria-label="refresh web result">
+                        <Refresh sx={{ fill: theme.palette.primary.main }} />
+                      </IconButton>
+                    </Box>
+                    <Microlink url={searchResult.webResult[webResultIndex].url} />
+                  </>
+                )}
+                <Box sx={{ mt: 4, display: "flex", justifyContent: "center" }}>
+                  <Button variant="contained" onClick={handleExitResources}>
+                    Exit
+                  </Button>
+                </Box>
               </>
             )}
-            <Box sx={{ mt: 4, display: "flex", justifyContent: "space-between" }}>
-              {infoBits[current].video_resource && (
-                <Link
-                  href={infoBits[current].video_resource}
-                  target="_blank"
-                  sx={{ display: "flex", alignItems: "center" }}
-                >
-                  <YouTubeIcon sx={{ mr: 1, fill: theme.palette.primary.main }} />
-                  Watch Video
-                </Link>
-              )}
-              {infoBits[current].text_resource && (
-                <Link href={infoBits[current].text_resource} target="_blank">
-                  Read Article
-                </Link>
-              )}
-            </Box>
-            <Box sx={{ mt: 2, display: "flex", justifyContent: "center" }}>
-              {current !== infoBits.length - 1 && (
-                <Button variant="outlined" sx={{ mr: 2 }} onClick={confirmForExit}>
-                  Exit
-                </Button>
-              )}
-              <Button variant="contained" onClick={handleNext}>
-                {current === infoBits.length - 1 ? "Finish" : "Next"}
-              </Button>
-            </Box>
           </Box>
         </Modal>
       )}

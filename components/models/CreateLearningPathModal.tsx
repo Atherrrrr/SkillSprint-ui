@@ -15,6 +15,8 @@ import {
 import { useSnackbar } from "@/store/snackbar";
 import axios from "axios";
 import { CREATE_ROADMAP, SUBMIT_PRACTICE_SESSION_MODEL } from "@/hooks/apiHelper";
+import { currentUserAtom } from "@/store/store";
+import { useAtom } from "jotai";
 
 const modalStyle = {
   position: "absolute",
@@ -66,19 +68,28 @@ const desiredSkillLevels = [
 const timeOptions = ["5 minutes", "10 minutes", "15 minutes", "20 minutes", "30 minutes"];
 const estimatedLearningDurationOptions = ["5 days", "1 week", "2 weeks", "3 weeks", "1 month"];
 
-function LearningPathModal({ open, handleClose }) {
+function CreateLearningPathModal({ open, handleClose }) {
   const steps = 6;
   const [activeStep, setActiveStep] = useState(0);
   const snackbar = useSnackbar();
+  const [currentUser] = useAtom(currentUserAtom);
 
-  const [formData, setFormData] = useState({
+  const defaultForumData = {
     title: "",
     goal: "",
     currentSkillLevel: "",
     desiredSkillLevel: "",
     dailyTime: "",
     estimatedLearningDuration: "",
-  });
+  };
+
+  const [formData, setFormData] = useState(defaultForumData);
+
+  const resetForum = () => {
+    setActiveStep(0);
+    setFormData(defaultForumData);
+    handleClose();
+  };
 
   const handleNext = () => {
     if (activeStep < steps - 1) {
@@ -89,18 +100,23 @@ function LearningPathModal({ open, handleClose }) {
   };
 
   const onFinish = async () => {
-    console.log("formData", formData);
-    const userId = "9cbf6343-3c5a-493f-b004-1a980cce0ee7";
-    // const response = axios.post(CREATE_ROADMAP(userId), {
-    //   ...formData,
-    //   userId: "9cbf6343-3c5a-493f-b004-1a980cce0ee7",
-    // });
+    if (currentUser?.sub) {
+      try {
+        console.log("Creating roadmap");
+        // const response = await axios.post(CREATE_ROADMAP(currentUser.sub), {
+        //   ...formData,
+        //   userId: currentUser.sub,
+        // });
+        snackbar(
+          "success",
+          "Request Submitted! The new Learning Path is being prepared and will soon be available in 5-8 minutes."
+        );
+      } catch (error) {
+        console.error("Failed to create a new learning paths:", error);
+      }
+    }
 
-    snackbar(
-      "success",
-      "Creation of the roadmap was successful! The new learning path is being prepared and will soon be added to your learning paths."
-    );
-    handleClose();
+    resetForum();
   };
 
   const handleBack = () => {
@@ -153,7 +169,7 @@ function LearningPathModal({ open, handleClose }) {
     <>
       <Modal
         open={open}
-        onClose={handleClose}
+        onClose={resetForum}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -268,7 +284,7 @@ function LearningPathModal({ open, handleClose }) {
             )}
           </div>
           <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
-            <Button onClick={handleClose} variant="outlined" sx={{ ml: 1 }}>
+            <Button onClick={resetForum} variant="outlined" sx={{ ml: 1 }}>
               Cancel
             </Button>
             {activeStep > 0 && (
@@ -291,4 +307,4 @@ function LearningPathModal({ open, handleClose }) {
   );
 }
 
-export default LearningPathModal;
+export default CreateLearningPathModal;

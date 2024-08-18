@@ -124,11 +124,6 @@ export default function SideBar({ updateSideBarWidth }: SideBarProps) {
       icon: <IntegrationInstructionsIcon style={{ fill: theme.palette.text.secondary }} />,
       page: "integrations",
     },
-    {
-      title: "Security",
-      icon: <SecurityIcon style={{ fill: theme.palette.text.secondary }} />,
-      page: "security",
-    },
   ];
 
   const menuItems = [
@@ -148,19 +143,9 @@ export default function SideBar({ updateSideBarWidth }: SideBarProps) {
       page: "learning-path",
     },
     {
-      title: "Friends",
-      icon: <Group style={{ fill: theme.palette.text.secondary }} />,
-      page: "friends",
-    },
-    {
       title: "Trends",
       icon: <TrendingUp style={{ fill: theme.palette.text.secondary }} />,
       page: "trends",
-    },
-    {
-      title: "Calendar",
-      icon: <CalendarToday style={{ fill: theme.palette.text.secondary }} />,
-      page: "calendar",
     },
   ];
 

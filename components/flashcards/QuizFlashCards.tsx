@@ -21,7 +21,7 @@ import {
   Dialog,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import ErrorIcon from "@mui/icons-material/Error";
+import { CheckCircleOutline, Circle, ErrorOutline } from "@mui/icons-material";
 
 interface Quiz {
   text: string;
@@ -43,15 +43,15 @@ const QuizFlashCards: React.FC<Props> = ({
   handleClose,
   handleComplete,
 }) => {
-  const default_result = { correct: 0, wrong: 0 };
+  const default_finalResult = { passed: false, wrongCount: 0, correctCount: 0 };
   const [current, setCurrent] = useState(0);
   const [selectedOption, setSelectedOption] = useState<string>("");
   const [submitted, setSubmitted] = useState(false);
   const [questions, setQuestions] = useState(null);
   const theme = useTheme();
   const [openConfirm, setOpenConfirm] = useState(false);
-  const [result, setResult] = useState(default_result);
-  const [passed, setPassed] = useState(false);
+  const [result, setResult] = useState<boolean[]>([]);
+  const [finalResult, setFinalResult] = useState(default_finalResult);
   const [showResult, setShowResult] = useState(false);
 
   useEffect(() => {
@@ -63,7 +63,7 @@ const QuizFlashCards: React.FC<Props> = ({
     } else {
       setQuestions(completeQuestions);
     }
-  }, [completeQuestions]);
+  }, [completeQuestions, handleComplete]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (!submitted) {
@@ -84,27 +84,34 @@ const QuizFlashCards: React.FC<Props> = ({
     setSubmitted(true);
   };
 
-  const handleQuizComplete = () => {
-    console.log("Quiz Completed");
-    let passed = false;
-    if (result.correct >= 6 && result.wrong <= 1) {
-      setPassed(true);
+  const handleQuizComplete = (complete_result) => {
+    console.log("Quiz Completed", complete_result);
+
+    // Calculate the number of correct and wrong answers
+    const correctCount_r = complete_result.filter((answer) => answer === true).length;
+    const wrongCount_r = complete_result.filter((answer) => answer === false).length;
+
+    let passed_r = false;
+    if (correctCount_r >= 6 && wrongCount_r <= 1) {
+      passed_r = true;
     }
+
+    setFinalResult({ passed: passed_r, wrongCount: wrongCount_r, correctCount: correctCount_r });
     setShowResult(true);
   };
 
   const exitViaComplete = () => {
+    handleComplete(finalResult.passed);
     setShowResult(false);
     resetData();
-    handleComplete(passed);
   };
 
   const resetData = () => {
     setCurrent(0);
     setSelectedOption("");
     setSubmitted(false);
-    setResult(default_result);
-    setPassed(false);
+    setResult([]);
+    setFinalResult(default_finalResult);
   };
 
   const confirmForExit = () => {
@@ -112,17 +119,16 @@ const QuizFlashCards: React.FC<Props> = ({
   };
 
   const updateResult = () => {
-    if (isAnswerCorrect(selectedOption)) {
-      setResult((prevResult) => ({
-        correct: prevResult.correct + 1,
-        wrong: prevResult.wrong,
-      }));
-    } else {
-      setResult((prevResult) => ({
-        correct: prevResult.correct,
-        wrong: prevResult.wrong + 1,
-      }));
-    }
+    let newResult: boolean[] = [];
+
+    setResult((prevResult) => {
+      // Calculate the new result array
+      newResult = [...prevResult, isAnswerCorrect(selectedOption)];
+      return newResult;
+    });
+
+    // Return the new result array
+    return newResult;
   };
 
   const handleNext = () => {
@@ -132,8 +138,7 @@ const QuizFlashCards: React.FC<Props> = ({
       setSubmitted(false);
       setSelectedOption("");
     } else {
-      updateResult();
-      handleQuizComplete(); // Optionally, handle the completion differently
+      handleQuizComplete(updateResult());
     }
   };
 
@@ -145,7 +150,6 @@ const QuizFlashCards: React.FC<Props> = ({
 
   const renderOptions = () => {
     const question = questions[current];
-    const correctOption = question.correctAnswer; // Assuming there's a 'correctAnswer' field
 
     if (question.type === "multiple-choice") {
       return (
@@ -258,7 +262,10 @@ const QuizFlashCards: React.FC<Props> = ({
             </Box>
 
             <FormControl component="fieldset">
-              <FormLabel component="legend" sx={{ mb: 2, fontWeight: "bold" }}>
+              <FormLabel
+                component="legend"
+                sx={{ mb: 2, fontWeight: "bold", color: theme.palette.text.primary }}
+              >
                 Q: {questions[current].text}
               </FormLabel>
               {renderOptions()}
@@ -280,38 +287,84 @@ const QuizFlashCards: React.FC<Props> = ({
           </Box>
         </Modal>
       )}
-      <Dialog
-        open={showResult}
-        onClose={exitViaComplete}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">{"Confirm Exit"}</DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            <Box
-              sx={{
-                padding: 2,
-                margin: 2,
-                border: "1px solid grey",
-                borderRadius: "4px",
-                bgcolor: passed ? "lightgreen" : "#E57373",
-              }}
-            >
-              <Typography variant="body1">
-                You have {result.wrong} incorrect answer{result.wrong !== 1 ? "s" : ""} and{" "}
-                {result.correct} correct answer{result.correct !== 1 ? "s" : ""}. Please review and
-                reattempt the quiz.
-              </Typography>
+      {showResult && (
+        <Dialog
+          open={showResult}
+          onClose={exitViaComplete}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+          sx={{ color: "#fff" }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              padding: "20px",
+              borderRadius: "8px",
+              margin: "auto",
+            }}
+          >
+            {finalResult.passed ? (
+              <CheckCircleOutline sx={{ fontSize: "60px", fill: "green", marginBottom: "16px" }} />
+            ) : (
+              <ErrorOutline sx={{ fontSize: "60px", fill: "red", marginBottom: "16px" }} />
+            )}
+
+            <Typography variant="h4" align="center" gutterBottom>
+              {finalResult.passed
+                ? "Quiz Completed Successfully"
+                : "Please review and reattempt the Quiz"}
+            </Typography>
+
+            <Typography variant="body1" align="center" gutterBottom>
+              You have {finalResult.wrongCount} incorrect answer
+              {finalResult.wrongCount !== 1 ? "s" : ""} and {finalResult.correctCount} correct
+              answer
+              {finalResult.correctCount !== 1 ? "s" : ""}.
+            </Typography>
+
+            <Box sx={{ display: "flex", justifyContent: "center", marginTop: "16px" }}>
+              {result.map((answer, index) => (
+                <Box
+                  key={index}
+                  sx={{
+                    position: "relative",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginRight: "8px",
+                  }}
+                >
+                  <Circle
+                    sx={{
+                      fontSize: "40px",
+                      fill: answer ? "green" : "red",
+                    }}
+                  />
+                  <Typography
+                    sx={{
+                      position: "absolute",
+                      fontSize: "16px",
+                      color: "white",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    {index + 1}
+                  </Typography>
+                </Box>
+              ))}
             </Box>
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions style={{ justifyContent: "center" }}>
-          <Button variant="outlined" onClick={exitViaComplete} color="primary">
-            Exit
-          </Button>
-        </DialogActions>
-      </Dialog>
+          </Box>
+          <DialogContentText id="alert-dialog-description"></DialogContentText>
+
+          <DialogActions style={{ justifyContent: "center" }}>
+            <Button variant="contained" onClick={exitViaComplete} color="primary">
+              Exit
+            </Button>
+          </DialogActions>
+        </Dialog>
+      )}
 
       <Dialog
         open={openConfirm}

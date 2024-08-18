@@ -53,7 +53,7 @@ const CircularScore: React.FC<CircularScoreProps> = ({ label, toolTipInfo, progr
   return (
     <Root>
       <Box display="flex" alignItems="center" justifyContent="center">
-        <Typography variant="h3" align="center">
+        <Typography variant="h4" align="center">
           {label}
         </Typography>
         <Tooltip title={toolTipInfo} placement="top" arrow>

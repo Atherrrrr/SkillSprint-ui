@@ -10,34 +10,34 @@ const CourseProgressChart: React.FC = () => {
 
   const courses = [
     {
-      name: "Data Science",
-      startDate: new Date(2023, 7, 1),
-      incrementPattern: [1, 2, 1, 0, 2, 2, 1, 0, 1, 2, 1, 0, 2, 1, 1, 2],
+      name: "AWS CloudWatch in Action",
+      startDate: new Date(2024, 8, 8),
+      incrementPattern: [1, 2, 1, 0, 2, 2, 1, 0, 1, 2, 1, 0, 2, 1],
     },
     {
-      name: "Cloud Computing",
-      startDate: new Date(2023, 7, 3),
-      incrementPattern: [1, 2, 0, 1, 2, 2, 0, 1, 1, 2, 0, 1, 2, 1, 1, 2],
+      name: "AWS EKS Deep Dive",
+      startDate: new Date(2024, 8, 4),
+      incrementPattern: [1, 2, 0, 1, 2, 2, 0, 1, 1, 2, 0],
     },
     {
-      name: "Python Development",
-      startDate: new Date(2023, 7, 2),
-      incrementPattern: [1, 0, 2, 1, 1, 2, 0, 2, 1, 2, 0, 1, 1, 1, 2, 0, 2, 2],
+      name: "AWS Lambda Fundamentals",
+      startDate: new Date(2024, 8, 5),
+      incrementPattern: [1, 0, 2, 1, 1, 2, 0, 2, 1, 2, 0],
     },
     {
-      name: "React UI/UX Design",
-      startDate: new Date(2023, 7, 4),
-      incrementPattern: [1, 1, 1, 0, 2, 1, 0, 2, 2, 1, 0, 1, 2, 1, 2, 0, 1],
+      name: "Amazon S3 Mastery",
+      startDate: new Date(2024, 8, 9),
+      incrementPattern: [1, 1, 1, 0, 2, 1, 0, 2, 2, 1, 0, 1, 2, 1],
     },
     {
-      name: "Machine Learning",
-      startDate: new Date(2023, 7, 1),
-      incrementPattern: [1, 1, 2, 2, 0, 1, 2, 1, 0, 1, 2, 2, 1, 0, 2, 2],
+      name: "AWS Cloud Computing Mastery",
+      startDate: new Date(2024, 8, 13),
+      incrementPattern: [0, 5, 3, 4],
     },
     {
-      name: "Frontend Development",
-      startDate: new Date(2023, 7, 5),
-      incrementPattern: [1, 0, 1, 2, 1, 2, 0, 1, 2, 1, 1, 2, 0, 2, 1, 2, 0],
+      name: "Data Science with Python",
+      startDate: new Date(2024, 8, 12),
+      incrementPattern: [0, 2, 1, 2, 4, 2],
     },
   ];
 

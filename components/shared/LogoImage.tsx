@@ -17,7 +17,7 @@ export function LogoImage() {
   return (
     <>
       <StyledImage
-        alt={"WePrep"}
+        alt={"skillsprint"}
         src={theme.palette.mode === IThemeMode.LIGHT ? "/app-logo-light.png" : "/app-logo-dark.png"}
         width={0}
         height={0}

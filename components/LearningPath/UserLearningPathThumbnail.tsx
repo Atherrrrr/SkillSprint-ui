@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Card,
   CardContent,
@@ -12,28 +12,55 @@ import {
 } from "@mui/material";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { useTheme } from "@mui/material/styles";
-import { NewReleases, School, Star, TrendingUp } from "@mui/icons-material";
+import { ArrowForward, NewReleases, School, Star, TrendingUp } from "@mui/icons-material";
 import { useRouter } from "next/router";
 
-function LearningPathThumbnail({
+function UserLearningPathThumbnail({
   id,
   title,
   description,
-  image,
+  imageURL,
   mostPopular = false,
   trending = false,
   newRelease = false,
   forBeginners = false,
   currentPhase,
-  totalPhases,
+  phaseCount,
   currentLesson,
   totalLessons,
-  currentTime,
-  totalTime,
+  status,
+  goal,
+  currentSkillLevel,
+  desiredSkillLevel,
 }) {
   const theme = useTheme();
   const router = useRouter();
-  const progress = (currentTime / totalTime) * 100; // Calculate progress based on time
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const progressVal = getProgress();
+    console.log("progressVal", progressVal);
+    setProgress(progressVal);
+    console.log("currentPhase", currentPhase);
+    console.log("phaseCount", phaseCount);
+  }, [id]);
+
+  const getProgress = () => {
+    let currentLevel = parseInt(currentLesson, 10) + parseInt(currentPhase, 10) - 2;
+    const totalLevel = totalLessons + phaseCount + 1;
+
+    if (status === "Last Phase Quiz") {
+      currentLevel = totalLevel - 2;
+    } else if (status === "Final Quiz") {
+      currentLevel = totalLevel - 1;
+    } else if (status === "Completed") {
+      currentLevel = totalLevel;
+    }
+
+    const result = Math.floor((100 * currentLevel) / totalLevel);
+
+    return result;
+  };
 
   const handleCardClick = () => {
     router.push({
@@ -100,6 +127,20 @@ function LearningPathThumbnail({
                 <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
                   {description}
                 </Typography>
+                <Box sx={{ display: "flex", alignItems: "center", mt: 2 }}>
+                  <Typography variant="h6" sx={{ mr: 1, flexShrink: 0 }}>
+                    Goal:
+                  </Typography>
+                  <Typography sx={{ flexGrow: 1 }}>{goal}</Typography>
+                </Box>
+                <Box sx={{ display: "flex", alignItems: "center", mt: 1 }}>
+                  <Typography variant="h6" sx={{ mr: 1, flexShrink: 0 }}>
+                    Skill Level:
+                  </Typography>
+                  <Chip label={currentSkillLevel} color="secondary" sx={{ marginRight: 1 }} />
+                  <ArrowForward sx={{ mx: 1, fill: theme.palette.text.primary }} />
+                  <Chip label={desiredSkillLevel} color="secondary" />
+                </Box>
               </CardContent>
             </Grid>
             <Grid
@@ -108,7 +149,7 @@ function LearningPathThumbnail({
               sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
             >
               <Avatar
-                src={image}
+                src={imageURL}
                 alt="Learning Path"
                 sx={{
                   width: "100%",
@@ -122,34 +163,27 @@ function LearningPathThumbnail({
           </Grid>
         </Grid>
         <Grid item xs={12} sx={{ display: "flex", justifyContent: "center" }}>
-          {typeof currentLesson === "number" && typeof totalLessons === "number" && (
-            <Box sx={{ width: "90%", display: "flex", alignItems: "center" }}>
-              <LinearProgress
-                variant="determinate"
-                value={progress}
-                sx={{ flexGrow: 1, marginRight: 2 }}
-              />
-              <Typography variant="body2" color="text.secondary">
-                {`${Math.round(progress)}%`}
-              </Typography>
-            </Box>
-          )}
+          <Box sx={{ width: "90%", display: "flex", alignItems: "center" }}>
+            <LinearProgress
+              variant="determinate"
+              value={progress}
+              sx={{ flexGrow: 1, marginRight: 2 }}
+            />
+            <Typography variant="body2" color="text.secondary">
+              {`${Math.round(progress)}%`}
+            </Typography>
+          </Box>
         </Grid>
         <Grid item xs={12} sx={{ display: "flex", justifyContent: "center" }}>
           <Box sx={{ display: "flex", justifyContent: "space-between", width: "90%" }}>
-            {typeof currentTime === "number" && typeof totalTime === "number" && (
-              <Typography variant="body2" color="text.secondary">
-                {`${currentTime} / ${totalTime} hours left`}
-              </Typography>
-            )}
-            {typeof currentLesson === "number" && typeof totalLessons === "number" && (
+            {typeof currentLesson === "string" && typeof totalLessons === "number" && (
               <Typography variant="body2" color="text.secondary">
                 {`Lesson ${currentLesson}/${totalLessons}`}
               </Typography>
             )}
-            {typeof currentPhase === "number" && typeof totalPhases === "number" && (
+            {typeof phaseCount === "number" && (
               <Typography variant="body2" color="text.secondary">
-                {`Phase ${currentPhase}/${totalPhases}`}
+                {`Phase ${currentPhase}/${phaseCount}`}
               </Typography>
             )}
           </Box>
@@ -159,4 +193,4 @@ function LearningPathThumbnail({
   );
 }
 
-export default LearningPathThumbnail;
+export default UserLearningPathThumbnail;

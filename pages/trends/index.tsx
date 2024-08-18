@@ -1,54 +1,96 @@
-import React from "react";
-import { Box, Grid, Typography } from "@mui/material"; // Adjust the import path as necessary
+import React, { useEffect, useState } from "react";
+import {
+  Box,
+  CircularProgress,
+  circularProgressClasses,
+  Grid,
+  Typography,
+  useTheme,
+} from "@mui/material"; // Adjust the import path as necessary
 import CourseProgressChart from "@/components/charts/CourseProgressChart";
-import CompletionBadge from "@/components/LearningPath/CompletionBadge";
+import CompletionBadge from "@/components/atoms/CompletionBadge";
+import { GET_USER_ROADMAP } from "@/hooks/apiHelper";
+import axios from "axios";
+import { currentUserAtom, exampleCompletedLearningPaths } from "@/store/store";
+import { useAtom } from "jotai";
 
 const Trends: React.FC = () => {
-  const myLearningPaths = [
-    {
-      id: "123",
-      title: "AWS Cloud Computing",
-      description:
-        "Master Cloud Computing using AWS services. This learning path will teach you about popular AWS services and how to effectively utilize them. Gain insights into optimizing cloud resources for real-world applications.",
-      completionDate: "August 16, 2024",
-      totalTimeSpent: "3 hours",
-    },
-    {
-      id: "124",
-      title: "Full-Stack Development",
-      description:
-        "Learn to build scalable full-stack applications using modern technologies like React, Node.js, and MongoDB. Understand how to connect your frontend and backend seamlessly.",
-      completionDate: "August 17, 2024",
-      totalTimeSpent: "40 hours",
-    },
-    {
-      id: "127",
-      title: "Data Science with Python",
-      description:
-        "Dive into the world of data science with Python. Analyze data, create beautiful visualizations, and use machine learning to glean insights and make predictions.",
-      completionDate: "August 18, 2024",
-      totalTimeSpent: "20 hours",
-    },
-  ];
+  const [completedLearningPaths, setCompletedLearningPaths] = useState(null);
+  const theme = useTheme();
+  const [currentUser] = useAtom(currentUserAtom);
+
+  useEffect(() => {
+    //get learning path.
+    if (currentUser?.sub) {
+      fetchUserLearningPath(currentUser.sub);
+    }
+  }, [currentUser]);
+
+  const fetchUserLearningPath = async (userId: string) => {
+    try {
+      const response = await axios.get(GET_USER_ROADMAP(userId));
+
+      const updatedPaths = response.data;
+
+      // Filter completed learning paths
+      let completedPaths = updatedPaths.filter((path) => path.status === "Completed");
+      completedPaths = [...completedPaths, ...exampleCompletedLearningPaths];
+
+      setCompletedLearningPaths(completedPaths);
+    } catch (error) {
+      console.error("Failed to fetch user learning paths:", error);
+      // Optionally, handle the error further, e.g., setting state to display an error message.
+    }
+  };
+
   return (
     <Box sx={{ flexGrow: 1, p: 3 }}>
       <Typography variant="h2" align="center" gutterBottom>
         Trends
       </Typography>
       <CourseProgressChart />
-      <Grid container spacing={2}>
-        {myLearningPaths.map((path) => (
-          <Grid item xs={12} sm={4} key={path.id}>
-            <CompletionBadge
-              id={path.id}
-              title={path.title}
-              description={path.description}
-              completionDate={path.completionDate}
-              totalTimeSpent={path.totalTimeSpent}
-              onCompletion={() => handleCompletionClick(path.id)}
+      <Grid container spacing={5}>
+        {completedLearningPaths ? (
+          completedLearningPaths.length > 0 && (
+            <Box
+              sx={{
+                ml: 3,
+                mt: 8,
+              }}
+            >
+              <Typography variant="h3" sx={{ ml: 2, mb: 2 }}>
+                Completed Learning Paths:
+              </Typography>
+              <Grid container spacing={5}>
+                {completedLearningPaths.map((roadmap) => (
+                  <Grid item key={roadmap.id} xs={12} sm={6} md={4} lg={3}>
+                    <CompletionBadge {...roadmap} />
+                  </Grid>
+                ))}
+              </Grid>
+            </Box>
+          )
+        ) : (
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "20vh",
+            }}
+          >
+            <CircularProgress
+              size={115}
+              thickness={2}
+              sx={{
+                [`& .${circularProgressClasses.circle}`]: {
+                  strokeLinecap: "round",
+                  stroke: theme.palette.primary.main,
+                },
+              }}
             />
-          </Grid>
-        ))}
+          </Box>
+        )}
       </Grid>
     </Box>
   );
